@@ -1,4 +1,4 @@
-package com.example.movieon
+package id.my.arieftb.movieon
 
 import org.junit.Test
 
