@@ -1,7 +1,7 @@
 MovieOn
 =====
 
-Very simple project to show collection of Movie from [MovieDb](https://developers.themoviedb.org) with minimalist design.
+Just very simple project to show collection of Movie from [MovieDb](https://developers.themoviedb.org).
 
 Main Feature
 -------------
