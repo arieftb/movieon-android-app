@@ -1,11 +1,13 @@
 package id.my.arieftb.movieon.persentation.feature.movie_list
 
-import id.my.arieftb.movieon.domain.model.entity.movie.MovieEntity
-import id.my.arieftb.movieon.domain.usecase.base.UseCase
+import id.my.arieftb.movieon.domain.usecase.movie.GetMoviesUseCaseImpl
 import id.my.arieftb.movieon.persentation.base.BasePresenter
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class MovieListPresenter(
-    private val getMovieUseCase: UseCase<List<MovieEntity>>
+@Singleton
+class MovieListPresenter @Inject constructor(
+    private val getMovieUseCase: GetMoviesUseCaseImpl
 ) : BasePresenter<MovieListContract.View>(), MovieListContract.Presenter {
     override fun doGetMovies() {
         getMovieUseCase.execute(
@@ -23,5 +25,10 @@ class MovieListPresenter(
                 view?.onFailureGetMovies(it)
             },
         )
+    }
+
+    override fun dettachView() {
+        getMovieUseCase.terminate()
+        super.dettachView()
     }
 }

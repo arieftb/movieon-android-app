@@ -13,6 +13,6 @@ data class MovieResponse(
     val release_date: String,
     val title: String,
     val video: Boolean,
-    val vote_average: Int,
-    val vote_count: Int
+    val vote_average: Double,
+    val vote_count: Double
 )
