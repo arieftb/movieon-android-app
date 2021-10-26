@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.core.Flowable
 
 class GetMoviesUseCaseImpl(
     private val movieRepo: MovieRepository
-) : FlowableUseCaseImpl<ResultEntity<List<MovieEntity>>>() {
+) : FlowableUseCaseImpl<List<MovieEntity>>() {
 
     override fun build(): Flowable<ResultEntity<List<MovieEntity>>> {
         return movieRepo.fetchCollection()

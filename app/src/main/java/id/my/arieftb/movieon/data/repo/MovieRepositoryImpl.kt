@@ -5,7 +5,6 @@ import id.my.arieftb.movieon.domain.model.entity.ResultEntity
 import id.my.arieftb.movieon.domain.model.entity.movie.MovieEntity
 import id.my.arieftb.movieon.domain.repo.movie.MovieRepository
 import io.reactivex.rxjava3.core.Flowable
-import retrofit2.HttpException
 
 class MovieRepositoryImpl(
     private val remoteDataSource: MovieRemoteDataSource
@@ -21,7 +20,7 @@ class MovieRepositoryImpl(
                     )
                 }?.toList() ?: emptyList())
             } else {
-                ResultEntity.Failure(HttpException(it))
+                ResultEntity.Error(it.message())
             }
         }
     }
