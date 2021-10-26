@@ -21,11 +21,17 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
         binding = ActivityMovieListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        presenter.attachView(this)
         presenter.doGetMovies()
     }
 
-    override fun onSuccessGetMovies(list: List<MovieEntity>) {
+    override fun onDestroy() {
+        presenter.dettachView()
+        super.onDestroy()
+    }
 
+    override fun onSuccessGetMovies(list: List<MovieEntity>) {
+        Log.d("MovieOn", "onSuccessGetMovies: $list")
     }
 
     override fun onEmptyGetMovies() {
