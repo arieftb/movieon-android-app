@@ -19,7 +19,8 @@ class MovieRepositoryImpl @Inject constructor(
                     MovieEntity(
                         response.id.toString(),
                         response.title,
-                        response.overview
+                        response.overview,
+                        genreIds = response.genre_ids
                     )
                 }?.toList() ?: emptyList())
             } else {

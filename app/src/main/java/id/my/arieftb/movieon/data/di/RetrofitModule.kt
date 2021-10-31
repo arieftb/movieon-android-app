@@ -3,6 +3,7 @@ package id.my.arieftb.movieon.data.di
 import dagger.Module
 import dagger.Provides
 import id.my.arieftb.movieon.BuildConfig
+import id.my.arieftb.movieon.data.source.remote.genre.GenreRemoteService
 import id.my.arieftb.movieon.data.source.remote.movie.MovieRemoteService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -41,4 +42,9 @@ class RetrofitModule {
     @Singleton
     fun provideContentApiService(retrofit: Retrofit): MovieRemoteService =
         retrofit.create(MovieRemoteService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideGenreRemoteService(retrofit: Retrofit): GenreRemoteService =
+        retrofit.create(GenreRemoteService::class.java)
 }

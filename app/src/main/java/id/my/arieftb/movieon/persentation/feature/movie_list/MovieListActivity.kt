@@ -3,6 +3,7 @@ package id.my.arieftb.movieon.persentation.feature.movie_list
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
 import id.my.arieftb.movieon.core.AppApplication
 import id.my.arieftb.movieon.core.di.DaggerApplicationComponent
 import id.my.arieftb.movieon.databinding.ActivityMovieListBinding
@@ -31,7 +32,7 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
     }
 
     override fun onSuccessGetMovies(list: List<MovieEntity>) {
-        Log.d("MovieOn", "onSuccessGetMovies: $list")
+        Log.d("MovieOn", "onSuccessGetMovies: ${Gson().toJson(list)}")
     }
 
     override fun onEmptyGetMovies() {
@@ -39,7 +40,7 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
     }
 
     override fun onFailureGetMovies(errorMessage: String) {
-
+        Log.d("MovieOn", "onFailureGetMovies: $errorMessage")
     }
 
     override fun onFailureGetMovies(throwable: Throwable) {

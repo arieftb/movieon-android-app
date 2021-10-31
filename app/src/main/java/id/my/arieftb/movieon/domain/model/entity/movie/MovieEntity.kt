@@ -6,5 +6,6 @@ data class MovieEntity(
     var id: String,
     var title: String,
     var overview: String? = "-",
-    var genres: List<GenreEntity>? = emptyList()
+    var genres: MutableList<GenreEntity>? = mutableListOf(),
+    var genreIds: List<Int>? = emptyList(),
 )
