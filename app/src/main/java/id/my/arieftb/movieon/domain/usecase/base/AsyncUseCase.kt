@@ -1,6 +1,6 @@
 package id.my.arieftb.movieon.domain.usecase.base
 
-interface UseCase<R> {
+interface AsyncUseCase<R> {
     fun execute(
         onSuccess: ((result: R) -> Unit),
         onError: ((result: String) -> Unit),

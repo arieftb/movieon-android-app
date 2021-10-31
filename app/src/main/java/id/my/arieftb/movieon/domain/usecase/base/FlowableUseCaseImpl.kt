@@ -6,7 +6,7 @@ import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-abstract class FlowableUseCaseImpl<R> : UseCase<R> {
+abstract class FlowableUseCaseImpl<R> : AsyncUseCase<R> {
     internal abstract fun build(): Flowable<ResultEntity<R>>
 
     private var job: Disposable? = null
