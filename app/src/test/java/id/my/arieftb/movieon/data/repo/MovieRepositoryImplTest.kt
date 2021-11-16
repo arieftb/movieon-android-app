@@ -1,17 +1,12 @@
 package id.my.arieftb.movieon.data.repo
 
-import android.security.identity.ResultData
 import id.my.arieftb.movieon.data.model.movies.MovieCollectionResponse
 import id.my.arieftb.movieon.data.source.remote.movie.MovieRemoteDataSource
 import id.my.arieftb.movieon.domain.model.entity.ResultEntity
 import id.my.arieftb.movieon.domain.model.entity.movie.MovieEntity
 import id.my.arieftb.movieon.utils.ResponseHelper
 import io.reactivex.rxjava3.core.Flowable
-import io.reactivex.rxjava3.kotlin.Flowables
-import io.reactivex.rxjava3.observers.TestObserver
 import io.reactivex.rxjava3.subscribers.TestSubscriber
-import org.junit.Assert.*
-
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -42,11 +37,12 @@ class MovieRepositoryImplTest {
             MovieCollectionResponse::class.java
         )
 
-//        When
+//        Stub
         Mockito.doReturn(Flowable.just(response)).`when`(remoteDataSource).fetchAlL()
 
-//        Trigger
-        val subscriber: TestSubscriber<ResultEntity<List<MovieEntity>>> = repository.fetchCollection().test()
+//        When
+        val subscriber: TestSubscriber<ResultEntity<List<MovieEntity>>> =
+            repository.fetchCollection().test()
 
 //        Then
         subscriber.assertValue {

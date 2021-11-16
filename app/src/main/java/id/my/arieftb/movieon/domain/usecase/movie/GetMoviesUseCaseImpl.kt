@@ -3,6 +3,7 @@ package id.my.arieftb.movieon.domain.usecase.movie
 import id.my.arieftb.movieon.domain.model.entity.ResultEntity
 import id.my.arieftb.movieon.domain.model.entity.genre.GenreEntity
 import id.my.arieftb.movieon.domain.model.entity.movie.MovieEntity
+import id.my.arieftb.movieon.domain.model.request.genre.GenreRequest
 import id.my.arieftb.movieon.domain.repo.movie.MovieRepository
 import id.my.arieftb.movieon.domain.usecase.base.FlowableUseCaseImpl
 import id.my.arieftb.movieon.domain.usecase.genre.GetGenreUseCaseImpl
@@ -23,8 +24,7 @@ class GetMoviesUseCaseImpl @Inject constructor(
                     movieList
                 }.map { movie ->
                     movie.genres = Flowable.fromIterable(movie.genreIds).concatMap { genreId ->
-                        getGenreUseCaseImpl.setRequest(genreId)
-                        getGenreUseCaseImpl.build().map { genre ->
+                        getGenreUseCaseImpl.build(GenreRequest(genreId)).map { genre ->
                             if (genre is ResultEntity.Success) {
                                 genre.data
                             } else {
