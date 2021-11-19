@@ -39,7 +39,7 @@ class MovieListActivity : AppCompatActivity(), MovieListContract.View {
 
     }
 
-    override fun onFailureGetMovies(errorMessage: String) {
+    override fun onErrorGetMovies(errorMessage: String) {
         Log.d("MovieOn", "onFailureGetMovies: $errorMessage")
     }
 

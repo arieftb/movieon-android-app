@@ -9,7 +9,7 @@ class MovieListContract {
     interface View {
         fun onSuccessGetMovies(list: List<MovieEntity>)
         fun onEmptyGetMovies()
-        fun onFailureGetMovies(errorMessage: String)
+        fun onErrorGetMovies(errorMessage: String)
         fun onFailureGetMovies(throwable: Throwable)
     }
 }

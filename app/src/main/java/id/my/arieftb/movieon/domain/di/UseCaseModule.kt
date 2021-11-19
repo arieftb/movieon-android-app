@@ -15,6 +15,6 @@ class UseCaseModule {
         GetGenreUseCaseImpl(genreRepository)
 
     @Provides
-    fun provideGetMoviesUseCase(movieRepository: MovieRepository, getGenreUseCaseImpl: GetGenreUseCaseImpl): GetMoviesUseCaseImpl =
-        GetMoviesUseCaseImpl(movieRepository, getGenreUseCaseImpl)
+    fun provideGetMoviesUseCase(movieRepository: MovieRepository, genreRepository: GenreRepository): GetMoviesUseCaseImpl =
+        GetMoviesUseCaseImpl(movieRepository, genreRepository)
 }

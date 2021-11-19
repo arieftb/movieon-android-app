@@ -19,7 +19,7 @@ class MovieListPresenter @Inject constructor(
                 }
             },
             onError = {
-                view?.onFailureGetMovies(it)
+                view?.onErrorGetMovies(it)
             },
             onFailure = {
                 view?.onFailureGetMovies(it)

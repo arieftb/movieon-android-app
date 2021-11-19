@@ -4,9 +4,9 @@ import id.my.arieftb.movieon.domain.model.entity.ResultEntity
 import id.my.arieftb.movieon.domain.model.entity.genre.GenreEntity
 import id.my.arieftb.movieon.domain.model.entity.movie.MovieEntity
 import id.my.arieftb.movieon.domain.model.request.genre.GenreRequest
+import id.my.arieftb.movieon.domain.repo.genre.GenreRepository
 import id.my.arieftb.movieon.domain.repo.movie.MovieRepository
 import id.my.arieftb.movieon.domain.usecase.base.FlowableUseCaseImpl
-import id.my.arieftb.movieon.domain.usecase.genre.GetGenreUseCaseImpl
 import io.reactivex.rxjava3.core.Flowable
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Singleton
 class GetMoviesUseCaseImpl @Inject constructor(
     private val movieRepo: MovieRepository,
-    private val getGenreUseCaseImpl: GetGenreUseCaseImpl
+    private val genreRepo: GenreRepository
 ) : FlowableUseCaseImpl<List<MovieEntity>>() {
 
     override fun build(): Flowable<ResultEntity<List<MovieEntity>>> {
@@ -24,7 +24,7 @@ class GetMoviesUseCaseImpl @Inject constructor(
                     movieList
                 }.map { movie ->
                     movie.genres = Flowable.fromIterable(movie.genreIds).concatMap { genreId ->
-                        getGenreUseCaseImpl.build(GenreRequest(genreId)).map { genre ->
+                        genreRepo.fetch(GenreRequest(genreId)).map { genre ->
                             if (genre is ResultEntity.Success) {
                                 genre.data
                             } else {
